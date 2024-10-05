@@ -12,9 +12,9 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            background-color: #f0f4f9;
             color: #333;
             padding: 20px;
         }
@@ -25,53 +25,142 @@
             color: white;
             padding: 20px;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 10px;
+            animation: fadeIn 1s ease-out;
         }
 
         section.temperature-info {
             margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .temperature-info h2 {
             text-align: center;
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 2em;
             color: #333;
+            animation: slideDown 1s ease-out;
         }
 
         .temp-range {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            padding: 15px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .temp-range:hover {
+            transform: scale(1.05);
         }
 
         .temp-range h3 {
-            font-size: 1.4em;
+            font-size: 1.6em;
             margin-bottom: 10px;
             color: #4caf50;
         }
 
         .temp-range p {
             margin-bottom: 8px;
-            font-size: 1.1em;
+            font-size: 1.2em;
         }
 
         footer {
             background-color: #4caf50;
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            animation: slideUp 1s ease-out;
         }
 
         footer p {
-            font-size: 1.1em;
+            font-size: 1em;
+        }
+
+        @keyframes slideDown {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .temp-range {
+                width: 95%;
+            }
+        }
+        .card {
+            width: 100%;
+            max-width: 600px;
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            border-radius: 8px;
+        }
+        .card-header {
+            padding: 16px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .card-content {
+            padding: 16px;
+        }
+        .card-content .box {
+            background-color: #45A049;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .box h3 {
+            font-weight: 600;
+        }
+        .box p {
+            font-size: 1.125em;
+        }
+        .note {
+            margin-top: 8px;
+            font-size: 0.875em;
         }
     </style>
 </head>
@@ -81,37 +170,63 @@
         <p>Entdecke die Wirkung verschiedener Temperaturen beim Verdampfen von Cannabis.</p>
     </header>
     
+    <section class="recommended-temperatures">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Empfohlene Temperaturen</h2>
+            </div>
+            <div class="card-content">
+                <div class="box">
+                    <h3>Für ein mildes High:</h3>
+                    <p>160–180°C</p>
+                </div>
+                <div class="box">
+                    <h3>Für maximale Extraktion der Cannabinoide:</h3>
+                    <p>200–220°C</p>
+                </div>
+                <p class="note">Halte die Temperatur unter 220°C, um unerwünschte Nebenprodukte zu vermeiden.</p>
+            </div>
+        </div>
+    </section>
+    
     <section class="temperature-info">
         <h2>Temperaturen & Wirkstoffe</h2>
 
-        <div class="temp-range">
+        <div class="temp-range" onclick="alert('Niedrige Temperaturen (140–160°C): Mildes, klares High durch THC.')">
             <h3>1. Niedrige Temperaturen (140–160°C)</h3>
             <p><strong>THC (Tetrahydrocannabinol):</strong> 157°C – mildes, klares „High“</p>
             <p><strong>CBD (Cannabidiol):</strong> 160–180°C – beruhigend, stresslindernd</p>
         </div>
 
-        <div class="temp-range">
+        <div class="temp-range" onclick="alert('Mittlere Temperaturen (160–200°C): Entspannende Effekte durch Myrcen.')">
             <h3>2. Mittlere Temperaturen (160–200°C)</h3>
             <p><strong>CBN (Cannabinol):</strong> 185°C – beruhigend, schlaffördernd</p>
             <p><strong>Limonen (Terpen):</strong> 177°C – stimmungsaufhellend, stresslindernd</p>
             <p><strong>Myrcen (Terpen):</strong> 166–168°C – entspannend, verstärkt THC-Wirkung</p>
         </div>
 
-        <div class="temp-range">
+        <div class="temp-range" onclick="alert('Hohe Temperaturen (200–220°C): Schmerzlindernde Effekte durch CBC.')">
             <h3>3. Hohe Temperaturen (200–220°C)</h3>
             <p><strong>CBC (Cannabichromen):</strong> 220°C – entzündungshemmend, schmerzlindernd</p>
             <p><strong>Linalool (Terpen):</strong> 198°C – beruhigend, angstlösend</p>
             <p><strong>Caryophyllen (Terpen):</strong> 199°C – schmerzlindernd, würziger Duft</p>
         </div>
 
-        <div class="temp-range">
+        <div class="temp-range" onclick="alert('Sehr hohe Temperaturen (über 220°C): Energetisierende Effekte durch THCV.')">
             <h3>4. Sehr hohe Temperaturen (über 220°C)</h3>
             <p><strong>THCV (Tetrahydrocannabivarin):</strong> 220–225°C – appetitzügelnd, energetisierend</p>
         </div>
     </section>
 
     <footer>
-        <p><strong>Empfohlene Temperaturen:</strong> Für ein mildes High 160–180°C, für maximale Extraktion der Cannabinoide 200–220°C. Halte die Temperatur unter 220°C, um unerwünschte Nebenprodukte zu vermeiden.</p>
+        <p>&copy; 2024 Cannabis Vaporizer Guide. Alle Rechte vorbehalten.</p>
     </footer>
+
+    <script>
+        // You can add more interactivity here, for example, dynamic temperature info
+        function showTempInfo(tempInfo) {
+            alert(tempInfo);
+        }
+    </script>
 </body>
 </html>
